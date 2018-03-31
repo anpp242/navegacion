@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
+import { ModalPage } from '../index.paginas';
 
 @IonicPage()
 @Component({
@@ -8,11 +9,24 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class AjustesPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(private modalCtrl: ModalController, public navCtrl: NavController, public navParams: NavParams) {
   }
 
   activarPrincipal(){
     this.navCtrl.parent.select(2);
+  }
+
+  mostrarModal(){
+    let modal = this.modalCtrl.create( ModalPage, { nombre: 'Omar', edad: 27 } );
+    modal.present();
+    modal.onDidDismiss( parametros =>{
+      if( parametros ){
+        console.log("Data del modal:");
+        console.log( parametros );
+      }else{
+        console.log("Se cerró sin parametros");
+      }
+    } );
   }
 
 }

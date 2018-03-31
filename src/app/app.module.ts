@@ -27,7 +27,9 @@ import { PrincipalPage,
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp,{
+      backButtonText: "Atras"
+    })
   ],
   bootstrap: [IonicApp],
   entryComponents: [
